@@ -32,12 +32,12 @@ def main(blobin: func.InputStream, blobout: func.Out[bytes], context: func.Conte
 
     # Let's make sure we're dealing in RGB
     if input_image.mode != 'RGB':
-        print(f'Image color system is {input_image.mode}, converting to RGB...')
+        logging.info(f'Image color system is {input_image.mode}, converting to RGB...')
         input_image = input_image.convert('RGB')
 
     # Image is RGB so let's check for embedded ICC profile
     if input_image.info.get('icc_profile') != None:
-        print('Image has an embedded ICC profile. Stripping on save.')
+        logging.info('Image has an embedded ICC profile. Stripping on save.')
 
     # Store output image in a memory stream
     # Output JPEG quality is controlled by the 'quality' parameter
